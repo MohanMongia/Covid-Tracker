@@ -11,7 +11,7 @@ const DataHolder = (props) => {
                     {props.heading}
                 </div>
                 <div className="marg-bottom">
-                    <span className="number">{formatter(props.number)}</span>
+                    <span className="number">{formatter(props.number || 0)}</span>
                 </div>
             </div>
         </div>
