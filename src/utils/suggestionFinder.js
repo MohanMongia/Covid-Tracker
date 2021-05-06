@@ -6,8 +6,9 @@ export default function getSuggestions(text) {
         let sanitizedState = state[0].trim().toLowerCase().substring(0,sanitizedData.length);
         if(sanitizedData === sanitizedState)
         {   
-            return state;
+            return true;
         }
+        return false;
     });
 
     return result;
