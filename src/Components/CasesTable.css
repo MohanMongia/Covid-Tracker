@@ -1,0 +1,19 @@
+table, tr {
+    border: 1px solid #3f3939;
+}
+
+
+
+table {
+    text-align: center;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+thead th{
+    background-color: #3f3939;
+    color: white;
+    font-size: 20px;
+    font-weight: normal;
+    padding: 16px;
+}
