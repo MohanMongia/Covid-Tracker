@@ -15,7 +15,7 @@ import SuggestionList from './SuggestionList';
 
 class Home extends React.Component {
 
-    state = { result:{} , suggestions:[]}
+    state = { result:{} , suggestions:[], suggestionsRecieved:false}
 
 
     getStateWiseData() {
@@ -29,8 +29,15 @@ class Home extends React.Component {
       }
     }
 
-    getSuggestionsToHome(suggestions) {
-        this.setState({suggestions:suggestions});
+    getSuggestionsToHome(suggestions,val) {
+        if(val.length===0)
+        {
+          this.setState({suggestions:suggestions,suggestionsRecieved:false});
+        }
+        else
+        {
+          this.setState({suggestions:suggestions,suggestionsRecieved:true});
+        }
     }
 
     componentDidMount() {
@@ -51,7 +58,7 @@ class Home extends React.Component {
                 
                 <SearchBar statePlaceholder="Search Your State.." getSuggestionsToHome={this.getSuggestionsToHome.bind(this)}/>
 
-                <SuggestionList suggestions={this.state.suggestions}/>
+                <SuggestionList suggestions={this.state.suggestions} suggestionsRecieved={this.state.suggestionsRecieved}/>
                 
                 <Route path="/" exact >
                     <Header heading="INDIA" />

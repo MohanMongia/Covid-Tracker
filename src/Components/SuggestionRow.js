@@ -4,10 +4,27 @@ import "./SuggestionRow.css"
 
 
 const SuggestionRow = (props) => {
+    console.log(props.state);
+    if(props.state === undefined)
+    {
+        return (
+            <div className="rowNoRecord">
+                No Records Found ..
+            </div>
+        )
+    }
     return (
-        <div>
+        
+        <div className="row">
             <Link to={`/state/${props.state[1]}`} className="stateLink">
-                {props.state[0]} : {props.state[1]}
+                <div className="alignerDiv">
+                    <div className="slightPadding">
+                        {props.state[0]}
+                    </div>
+                    <div className="slightPadding">
+                        {props.state[1]}
+                    </div>
+                </div>
             </Link>
         </div>
     )

@@ -1,3 +1,30 @@
 .stateLink {
     color: blue;
 }
+
+.row {
+    padding: 8px 4px;
+    border-bottom: 1px solid grey;
+}
+
+.rowNoRecord {
+    padding: 8px 4px;
+    border-bottom: 1px solid grey;
+}
+
+.row:hover {
+    background-color: rgb(44, 44, 44);
+}
+
+.row:hover a {
+    color: white;
+}
+
+.alignerDiv { 
+    display: flex;
+    justify-content: space-between;
+}
+
+.slightPadding {
+    padding: 0px 8px;
+}

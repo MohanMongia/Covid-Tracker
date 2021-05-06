@@ -7,24 +7,30 @@ class SearchBar extends React.Component{
 
     state = { textInput : ""}
 
+    searchBarParent = React.createRef();
+
     onChangeHandler = (e) => {
         const val = e.target.value;
         this.setState({textInput:val});
         if(val.length>0)
         {
             const result = getSuggestions(e.target.value);
-            this.props.getSuggestionsToHome(result);
+            this.props.getSuggestionsToHome(result,val);
+            console.log(this.searchBarParent.current);
+            this.searchBarParent.current.classList.add("removeMarginBottom")
+
         }
         else
         {
-            this.props.getSuggestionsToHome([]);
+            this.searchBarParent.current.classList.remove("removeMarginBottom")
+            this.props.getSuggestionsToHome([],val);
         }
     }
 
     render()
     {
         return (
-            <div className="centered addMargin">
+            <div ref={this.searchBarParent} className="centered addMargin">
                 <div className="inputContainer">
                     <input className="searchBar" type='text' val={this.state.textInput}  onChange={this.onChangeHandler.bind(this)} placeholder={this.props.statePlaceholder} />
                     <div className="iconContainer">

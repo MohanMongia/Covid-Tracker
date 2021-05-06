@@ -2,3 +2,13 @@
     display: flex;
     justify-content: center;
 } 
+
+.greyBorder {
+    border-left: 2px solid grey;
+    border-right: 2px solid grey;
+    /* border-bottom: 2px solid grey; */
+}
+
+.rowWidth {
+    width: 32%;
+}
