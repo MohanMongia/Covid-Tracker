@@ -11,14 +11,23 @@ export default async function getCovidApiData() {
 
     if(!expiryTime || expiryTime < Date.now() || data==null)
     {
-        const result = await Covid.get('/v4/min/data.min.json');
-        if(result.status!==200)
-            console.log("Error fetching data");
-        else
+        try {
+            const result = await Covid.get('/v4/min/data.min.json');
+            if(result.status===200)
+            {
+                this.setState({data:result.data[stateCode]});
+                localStoragesetter("data",result.data);
+                localStoragesetter("expiry",Date.now() + timings.dataValidDuration )
+            }
+            else
+            {
+                throw new Error("Failed to fetch Data");
+            }
+        }
+        catch(err)
         {
-            this.setState({data:result.data[stateCode]});
-            localStoragesetter("data",result.data);
-            localStoragesetter("expiry",Date.now() + timings.dataValidDuration )
+            console.log(err);
+            this.setState({error:err.message});
         }
     }
     else
@@ -35,14 +44,24 @@ async function getCovidApiDataHome() {
 
     if(!expiryTime || expiryTime < Date.now() || data==null)
     {
-        const result = await Covid.get('/v4/min/data.min.json');
-        if(result.status!==200)
-            console.log("Error fetching data");
-        else
+        try{
+            const result = await Covid.get('/v4/min/data.min.json');
+            console.log(result);
+            if(result.status===200)
+            {
+                this.setState({result:result.data});
+                localStoragesetter("data",result.data);
+                localStoragesetter("expiry",Date.now() + timings.dataValidDuration )
+            }
+            else
+            {
+                throw new Error("Failed to fetch Data");
+            }
+        }
+        catch(err)
         {
-            this.setState({result:result.data});
-            localStoragesetter("data",result.data);
-            localStoragesetter("expiry",Date.now() + timings.dataValidDuration )
+            console.log(err);
+            this.setState({error:err.message});
         }
     }
     else

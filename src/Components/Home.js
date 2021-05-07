@@ -10,12 +10,13 @@ import calculateTotalCases , {calculateActiveCases,calculateDeceasedCases,calcul
 import {codeToState} from '../enums/data';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 import SuggestionList from './SuggestionList';
+import "./Error.css";
 
 
 
 class Home extends React.Component {
 
-    state = { result:{} , suggestions:[], suggestionsRecieved:false}
+    state = { result:{} , suggestions:[], suggestionsRecieved:false ,error : ""}
 
 
     getStateWiseData() {
@@ -51,6 +52,16 @@ class Home extends React.Component {
 
     render()
     {
+      if(this.state.error.length>0)
+      {
+        return (
+          <div className="errorParent">
+            <div className="errorDiv">
+                {this.state.error}
+            </div>
+          </div>
+        )
+      }
       return (
           <Router>
             <div className="setting">

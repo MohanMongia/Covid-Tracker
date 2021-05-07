@@ -9,7 +9,7 @@ const SuggestionRow = (props) => {
     {
         return (
             <div className="rowNoRecord">
-                No Records Found ..
+                No State Found ..
             </div>
         )
     }

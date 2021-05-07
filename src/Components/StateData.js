@@ -4,10 +4,12 @@ import {defaultResult} from '../enums/data';
 import getCovidApiData from '../utils/covidData';
 import DataHolderList from './DataHolderList';
 import TableRow from './TableRow';
+import "./Error.css";
+
 
 class StateData extends React.Component {
 
-    state={data:{}}
+    state={data:{},error: ""}
 
     componentDidMount() {
         getCovidApiData.call(this);
@@ -44,6 +46,16 @@ class StateData extends React.Component {
     }
 
     render() {
+        if(this.state.error.length>0)
+        {
+            return (
+                <div className="errorParent">
+                    <div className="errorDiv">
+                        {this.state.error}
+                    </div>
+                </div>
+            )
+        }
         return (
             <div>
                 

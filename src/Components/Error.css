@@ -1,0 +1,12 @@
+.errorParent {
+    display: flex;
+    border: 2px solid red;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    margin: 128px auto;
+    width: 25%;
+    padding: 64px;
+    background-color: pink;
+    font-size: 24px;
+}
