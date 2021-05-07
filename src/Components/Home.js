@@ -62,6 +62,15 @@ class Home extends React.Component {
           </div>
         )
       }
+      else if(Object.keys(this.state.result).length === 0)
+      {
+        return (
+          <div className="animationHolder">
+            <div className="lds-hourglass">
+            </div>
+          </div>
+        )
+      }
       return (
           <Router>
             <div className="setting">

@@ -56,6 +56,15 @@ class StateData extends React.Component {
                 </div>
             )
         }
+        else if(Object.keys(this.state.data).length === 0)
+        {
+          return (
+            <div className="animationHolder">
+              <div className="lds-hourglass">
+              </div>
+            </div>
+          )
+        }
         return (
             <div>
                 
