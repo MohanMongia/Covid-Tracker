@@ -1,5 +1,5 @@
 const timings = {
-    "dataValidDuration": 1*10*1000
+    "dataValidDuration": 5*60*1000
 }
 
 const headings = {
