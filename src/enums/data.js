@@ -89,6 +89,7 @@ const stateToCode = {
     "Uttarakhand":"UT",
     "West Bengal" : "WB"
 }
+
 module.exports ={
     timings,
     headings,

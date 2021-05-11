@@ -72,7 +72,7 @@ class Home extends React.Component {
         )
       }
       return (
-          <Router>
+          <Router basename={`${process.env.PUBLIC_URL}/`}>
             <div className="setting">
                 <Header heading="Covid Tracker" isMainHeading={true}/>
                 
