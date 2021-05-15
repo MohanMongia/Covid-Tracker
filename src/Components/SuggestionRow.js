@@ -4,7 +4,6 @@ import "./SuggestionRow.css"
 
 
 const SuggestionRow = (props) => {
-    console.log(props.state);
     if(props.state === undefined)
     {
         return (

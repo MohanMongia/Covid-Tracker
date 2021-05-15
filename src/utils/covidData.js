@@ -26,7 +26,6 @@ export default async function getCovidApiData() {
         }
         catch(err)
         {
-            console.log(err);
             this.setState({error:err.message});
         }
     }
@@ -46,7 +45,6 @@ async function getCovidApiDataHome() {
     {
         try{
             const result = await Covid.get('/v4/min/data.min.json');
-            console.log(result);
             if(result.status===200)
             {
                 this.setState({result:result.data});
@@ -60,7 +58,6 @@ async function getCovidApiDataHome() {
         }
         catch(err)
         {
-            console.log(err);
             this.setState({error:err.message});
         }
     }

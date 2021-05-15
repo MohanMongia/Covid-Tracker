@@ -4,27 +4,34 @@ import './SearchBar.css';
 
 
 class SearchBar extends React.Component{
-
     state = { textInput : ""}
+    
+    id=undefined
 
     searchBarParent = React.createRef();
 
     onChangeHandler = (e) => {
-        const val = e.target.value;
-        this.setState({textInput:val});
-        if(val.length>0)
-        {
-            const result = getSuggestions(e.target.value);
-            this.props.getSuggestionsToHome(result,val);
-            console.log(this.searchBarParent.current);
-            this.searchBarParent.current.classList.add("removeMarginBottom")
+        if(this.id) {
+            clearTimeout(this.id);
+        }
+        this.id=setTimeout(() => {
+            this.id=undefined;
+            const val = e.target.value;
+            this.setState({textInput:val});
+            if(val.length>0)
+            {
+                const result = getSuggestions(e.target.value);
+                this.props.getSuggestionsToHome(result,val);
+                this.searchBarParent.current.classList.add("removeMarginBottom")
+    
+            }
+            else
+            {
+                this.searchBarParent.current.classList.remove("removeMarginBottom")
+                this.props.getSuggestionsToHome([],val);
+            }
 
-        }
-        else
-        {
-            this.searchBarParent.current.classList.remove("removeMarginBottom")
-            this.props.getSuggestionsToHome([],val);
-        }
+        },500);
     }
 
     render()
